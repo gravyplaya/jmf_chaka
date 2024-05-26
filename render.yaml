@@ -1,10 +1,10 @@
 services:
 - type: web
-  name: ghost
+  name: jmf_chaka
   env: docker
   autoDeploy: false
   disk:
-    name: ghost
+    name: jmf_chaka
     mountPath: /var/lib/ghost/content
     sizeGB: 10 #Feel free to change this to suit your needs.
   envVars:
@@ -22,19 +22,19 @@ services:
     - key: database__connection__password
       fromService:
         type: pserv
-        name: mysql
+        name: mysql_chaka
         envVarKey: MYSQL_PASSWORD
 
 - type: pserv
-  name: mysql
+  name: mysql_chaka
   plan: standard
   env: docker
   repo: https://github.com/render-examples/mysql
   autoDeploy: false
   disk:
-    name: mysql
+    name: mysql_chaka
     mountPath: /var/lib/mysql
-    sizeGB: 10
+    sizeGB: 5
   envVars:
     - key: MYSQL_DATABASE
       value: ghostdb
